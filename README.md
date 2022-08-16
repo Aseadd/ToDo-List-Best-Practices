@@ -1,6 +1,6 @@
-# ToDo-List
+# ToDo-List Best Practices
 
-This project is Todo list Application
+This project is a Todo list Application used to add edit and remove todo tasks
 
 ## 🧰 Built With
 
