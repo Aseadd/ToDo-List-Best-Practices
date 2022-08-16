@@ -6,8 +6,8 @@ export default function showAllTodo(tasks) {
     listElement.innerHTML += `<div class="row" id="${listItem.index}" >
             <div class="input">
             <input type="checkbox" class="check" ${
-  listItem.completed ? 'checked' : ''
-}>
+              listItem.completed ? 'checked' : ''
+            }>
             <input class="list-text" value="${listItem.description}" readonly>
             </div>
             <div class="icon">
@@ -18,34 +18,34 @@ export default function showAllTodo(tasks) {
       `;
   });
 
-  document.querySelectorAll('.list-text').forEach((inp) => {
-    inp.addEventListener('click', () => {
-      inp.readOnly = false;
-      inp.focus();
-      inp.parentNode.parentNode
+  document.querySelectorAll('.list-text').forEach((listText) => {
+    listText.addEventListener('click', () => {
+      listText.readOnly = false;
+      listText.focus();
+      listText.parentNode.parentNode
         .querySelector('.fa-trash-alt')
         .classList.remove('hidden');
-      inp.parentNode.parentNode
+      listText.parentNode.parentNode
         .querySelector('.fa-ellipsis-v')
         .classList.add('hidden');
-      inp.parentNode.parentNode.style.background = 'rgb(231, 230, 177)';
-      inp.style.background = 'rgb(231, 230, 177)';
+      listText.parentNode.parentNode.style.background = 'rgb(231, 230, 177)';
+      listText.style.background = 'rgb(231, 230, 177)';
     });
-    inp.addEventListener('change', () => {
-      const { id } = inp.parentNode.parentNode;
+    listText.addEventListener('change', () => {
+      const { id } = listText.parentNode.parentNode;
       const currentTask = tasks.list.find((t) => t.index === +id);
-      currentTask.description = inp.value;
+      currentTask.description = listText.value;
 
       tasks.updateTodo(currentTask);
 
       setTimeout(() => {
-        inp.parentNode.parentNode
+        listText.parentNode.parentNode
           .querySelector('.fa-trash-alt')
           .classList.add('hidden');
-        inp.parentNode.parentNode
+        listText.parentNode.parentNode
           .querySelector('.fa-ellipsis-v')
           .classList.remove('hidden');
-        inp.readOnly = true;
+        listText.readOnly = true;
       }, 200);
     });
   });
